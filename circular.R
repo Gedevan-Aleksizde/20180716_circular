@@ -158,19 +158,20 @@ make_polar_data <- function(data){
 
 polar_tokyo23 <- make_polar_data(road_tokyo23)
 
-g <- ggplot(polar_tokyo23, aes(x=angle, fill=highway)) + geom_histogram(bins = 180) +
-  coord_polar(start=pi) +
-  scale_x_continuous(breaks=c(-pi, -pi/2, 0, pi/2, pi), labels = c("S", "W", "N", "E", "S")) + 
+g <- ggplot(polar_tokyo23, aes(x=angle, fill=highway)) + geom_histogram(bins=64) +
+  coord_polar(start=0) +
+  scale_x_continuous(limits = c(-pi, pi), breaks=c(-pi, -pi/2, 0, pi/2, pi), labels = c("S", "W", "N", "E", "S")) + 
   theme_tufte() + theme(panel.grid.major = element_line(colour="grey", size=.5)) +
   scale_fill_pander()
 print(g)
+
 
 # weight by road length
-g <- ggplot(polar_tokyo23, aes(x=angle, fill=highway, weight=radius)) + geom_histogram(bins = 180) +
-  coord_polar(start=pi) +
-  scale_x_continuous(breaks=c(-pi, -pi/2, 0, pi/2, pi), labels = c("S", "W", "N", "E", "S")) + 
+g <- ggplot(polar_tokyo23, aes(x=angle, fill=highway, weight=radius)) + geom_histogram(bins = 64) +
+  coord_polar(start=0) +
+  scale_x_continuous(limits = c(-pi, pi), breaks=c(-pi, -pi/2, 0, pi/2, pi), labels = c("S", "W", "N", "E", "S")) + 
   theme_tufte() + theme(panel.grid.major = element_line(colour="grey", size=.5)) +
   scale_fill_pander()
 print(g)
-
+ggsave(filename = "polar_length_weighted.png", g)
 
