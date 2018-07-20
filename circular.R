@@ -15,7 +15,6 @@ require(xkcd)  # ver. 0.0.6
 # https://notchained.hatenablog.com/entry/2018/05/28/003910
 # https://uribo.hatenablog.com/entry/2018/05/28/075500
 require(stringr)  # ver. 1.3.0
-require(circular)  # ver. 0.4-93
 
 #
 # How to drop unneccesarry cols
